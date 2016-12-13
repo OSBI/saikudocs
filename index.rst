@@ -1,11 +1,11 @@
 .. toctree::
    :maxdepth: 2
-Intro
-Saiku Project Information
-Saiku Documentation
-Saiku Tips and Tricks
-How-to Articles
-Development
+   Intro
+   Saiku Project Information
+   Saiku Documentation
+   Saiku Tips and Tricks
+   How-to Articles
+   Development
 
 ======
 Intro
