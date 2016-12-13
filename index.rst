@@ -2,11 +2,6 @@
    :maxdepth: 2
    index.rst
    saiku_project_information.rst
-   Saiku Project Information
-   Saiku Documentation
-   Saiku Tips and Tricks
-   How-to Articles
-   Development
 
 ======
 Intro
