@@ -1,4 +1,5 @@
- 
+Adding A New Data Source
+========================
 
 Whilst we haven't yet had the time or resource to create a lovely graphical admin console for you system administrators we have tried to make it simple for you to add data sources to the Saiku platform.
 
