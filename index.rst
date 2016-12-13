@@ -64,7 +64,7 @@ User Guide
    drilling.rst
    totals_and_subtotals.rst
    dashboards.rst
-   tips_and_tricks.rst
+   saiku_tips_and_tricks.rst
    how_to_articles.rst
 
 Project Information

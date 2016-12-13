@@ -9,9 +9,12 @@ Populate the parameter value
 To use the parameter via the Saiku UI you can then enter the parameter value in the textbox at the top of the query:
 
 Enter the value you want and press the query run button and your query will then be executed with the parameter in place:
-SET [~ROWS] AS
-    {[Store].[Stores].[Mexico]}
-SELECT
-NON EMPTY {[Measures].[Unit Sales], [Measures].[Measure Name]} ON COLUMNS,
-NON EMPTY [~ROWS] ON ROWS
-FROM [Sales]
+
+.. code-block:: mdx
+
+    SET [~ROWS] AS
+        {[Store].[Stores].[Mexico]}
+    SELECT
+    NON EMPTY {[Measures].[Unit Sales], [Measures].[Measure Name]} ON COLUMNS,
+    NON EMPTY [~ROWS] ON ROWS
+   FROM [Sales]
