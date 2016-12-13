@@ -1,6 +1,7 @@
 .. toctree::
    :maxdepth: 2
-   Intro
+   index.rst
+   saiku_project_information.rst
    Saiku Project Information
    Saiku Documentation
    Saiku Tips and Tricks
