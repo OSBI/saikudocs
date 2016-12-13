@@ -1,5 +1,8 @@
 .. toctree::
    :maxdepth: 2
+   :numbered:
+   :titlesonly:
+   :glob:
    index.rst
    saiku_project_information.rst
 
