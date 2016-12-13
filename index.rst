@@ -26,6 +26,7 @@ On-Line Analytical Processing (OLAP) is a category of software technology that e
 By harnessing the power of OLAP, Saiku allows users to choose the measures and dimensions they need to analyse and “slice and dice” the data and drill into the detail to uncover relationships, opportunities and issues. The intuitive user interface lets users drill down and up, filter, pivot, sort, and chart against OLAP and In-Memory engines. Utilizing the Olap4J library, Saiku is the first application on the market to offer support for Mondrian’s Scenario feature allowing non destructive editing of query results, giving users the ability to adjust the figures and perform “what-if” analysis over their data. By harnessing the power of Mondrian, Saiku offers scalable in-memory analysis. Large amounts of data can be stored in memory in a distributed manner across the local network, offering greatly improved performance over large data warehouses as the aggregated data is retrieved from the network instead of reading from disk.
 
 ![](wiki-attachment:Screenshot from 2014-11-21 20:43:23.png)
+.. image:: attachments/screenshot.png
 
 Architecture
 ============
