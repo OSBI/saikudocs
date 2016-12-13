@@ -1,3 +1,0 @@
-Saiku Features
-==============
-

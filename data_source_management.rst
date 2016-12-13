@@ -98,3 +98,11 @@ Line 3 is if you use lookup type, this allows you to map Saiku roles to cube rol
 
 As you can see this role prevents access to the whole HR cube.
 
+Additonal Connection Techniques
+-------------------------------
+
+.. toctree::
+   :maxdepth: 2
+   
+   connecting_to_microsoft_analysis_server.rst
+   connect_saiku_to_mssql_with_instance_names.rst

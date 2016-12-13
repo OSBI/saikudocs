@@ -1,3 +1,0 @@
-Included in the release of Saiku 3.6 was the new User Quota system. This allows Saiku Analytics customers with full licenses to allow unlicensed users to login up to 30 times. This allows users without a license to get a taste of Saiku and at that time you can then make a decision about buying the user a license.
-Once the user has used has used up all of their available logins they will be locked out and you are then required to buy a license for continued use.
-Users are informed of their quota usage in the query workspace, and administrators can find out about the quota usage in the About box which can be accessed from the main toolbar.

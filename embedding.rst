@@ -10,3 +10,8 @@ You can embed the Saiku UI within an IFrame and default to either a Table or Cha
 Saiku Embed Framework
 ---------------------
 Saiku Embed Framework is ideal for use cases when you require deeper embedding and interaction between source and target. For example you might want to create an application in which is passes parameters to Saiku reports to render the output, to do this Saiku Embed Framework is ideal.
+
+.. toctree::
+   :maxdepth: 2
+
+   saiku_embed_framework

@@ -1,3 +1,6 @@
+Server Documentation
+====================
+
 If you are interested in finding out more about the inner workings of the Saiku server please checkout our Javadocs and inbuilt Enunciate documentation.
 
 Our project uses Enunciate for documentation and some maintenance of endpoints. Most of our configuration is just based around on what is supplied out of the box but we may look to extend this in the future.
