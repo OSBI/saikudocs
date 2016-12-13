@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &#8212; Saiku Analytics 3.x documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>## New Query</p>
+<p>To create a new query click on the New Query button, or click the little + icon beyond the far right tab.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/newquery.png">http://docs.analytical-labs.com/img/newquery.png</a>)</p>
+<p>## Selecting a cube</p>
+<p>To create a query you need to select a cube which defines the data structure you are going to query. You&#8217;ll find the cube list on the left hand side, select the cube you require.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/cubelist.png">http://docs.analytical-labs.com/img/cubelist.png</a>)</p>
+<p>## Adding dimensions</p>
+<p>Once you have selected the cube you require you will be given a dimension and measure listing, you can drag these from the left hand panel onto the Rows, Columns and Filter axis drop areas. Measures need to be kept together but dimensions can be place where needed.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/dimensionlist.png">http://docs.analytical-labs.com/img/dimensionlist.png</a>)</p>
+<p>## Executing the query</p>
+<p>By default Saiku is configured to automatically execute a query when objects have been placed on its axis. Saiku requires at least one Dimension or Measure on both Rows and Columns. Once this is in place the query will execute and when it has finished executing the result will be displayed on the screen. If you switch off Automatic Execution you can then adjust the query and press the execute button once you are happy with the configuration.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/executequery.png">http://docs.analytical-labs.com/img/executequery.png</a>)</p>
+<p>## Toggle fields</p>
+<p>Once you have designed your query, if you require more screen space, click the toggle fields button and the Rows, Columns and Filter axis drop zones will be removed.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/togglefields.png">http://docs.analytical-labs.com/img/togglefields.png</a>)</p>
+<p>## Toggle Sidebar</p>
+<p>Similarly if you want to hide the left hand sidebar then clikc the Toggle Sidebar button and it will be hidden.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/togglesidebar.png">http://docs.analytical-labs.com/img/togglesidebar.png</a>)</p>
+<p>## Hide Parents</p>
+<p>Hide parents will remove the total rows and columns from the parent memebers in the result set.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/showparents.png">http://docs.analytical-labs.com/img/showparents.png</a>)</p>
+<p>## Non Empty</p>
+<p>MDX queries are created by crosstabulating data, therefore they often contain an awful lot of empty cells. The Hide Empty button is therefore enabled by default and it hides the empty cells, if you toggle this button you will likely then see a much larger resultset containing many empty cells.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/nonempty.png">http://docs.analytical-labs.com/img/nonempty.png</a>)</p>
+<p>## Swap Axis</p>
+<p>OLAP has always had the idea of pivoting close to its heart, and here you can pivot the entire resultset 90 degrees. By clicking the Swap Axis button you will then, as suggested, move all the items on the Rows to the Columns axis and visa versa.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/swapaxis.png">http://docs.analytical-labs.com/img/swapaxis.png</a>)</p>
+<p>## Show MDX</p>
+<p>All our queries are written in the MDX query language, you just don&#8217;t need to understand it. But if you require the query being used, then if you click the Show MDX button, a window will be displayed with the MDX being used to query the database.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/showmdx.png">http://docs.analytical-labs.com/img/showmdx.png</a>)</p>
+<p>## Show Explain Plan</p>
+<p>Show plan is a relatively new feature within Mondrian, in a similar was that many databases have a Explain Query function, Mondrian has an explain plan function to display how the MDX query is constructed. This can help with query optimisation and streamlining.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/explainplan.png">http://docs.analytical-labs.com/img/explainplan.png</a>)</p>
+<p>## Query Scenario</p>
+<p>## Drill Through On Cell</p>
+<p>Drill through allows you to see the underlying data in the query. Once you have run a query, select this option and then click on the cell you want to drill through on. You can then select the dimensions and measures you want in the drill through query and the row limit then hit okay. You&#8217;ll then be presented with a popup window containing the drill through data.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/drillthru.png">http://docs.analytical-labs.com/img/drillthru.png</a>)</p>
+<p>## Export drill through to CSV</p>
+<p>Drill through to CSV exports the drill through data to a CSV file for further analysis.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/drillthrucsv.png">http://docs.analytical-labs.com/img/drillthrucsv.png</a>)</p>
+<p>## Export to XLS</p>
+<p>Export to XLS will export the current query result set to an Excel file.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/exportxls.png">http://docs.analytical-labs.com/img/exportxls.png</a>)</p>
+<p>## Export to CSV</p>
+<p>Export to CSV will export the current query result set to a CSV file.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/exportcsv.png">http://docs.analytical-labs.com/img/exportcsv.png</a>)</p>
+<p>## Export to PDF</p>
+<p>Export to PDF will export the current query result set to a PDF file.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/exportpdf.png">http://docs.analytical-labs.com/img/exportpdf.png</a>)</p>
+<p>## Switch to MDX Mode</p>
+<p>Once you have designed you query you can then switch to MDX query mode by clicking this button. MDX query mode allows you to customise the query by altering the MDX query itself, but this is a one way operation and once you go to MDX mode you cannot get back to the drag and drop mode with any changes you have made.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/switchtomdxmode.png">http://docs.analytical-labs.com/img/switchtomdxmode.png</a>)</p>
+<p>## Tags</p>
+<p>## Sorting</p>
+<p>To sort by a level click on the little up or down arrows on the level box, this will rerun the query with the selected sort.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/sort.png">http://docs.analytical-labs.com/img/sort.png</a>)</p>
+<p>## Level Filtering</p>
+<p>To filter a level, click on the magnifying glass icon on the level label. A dialog will pop up with the available members that you can select. Move the members you want included within the filter to the Used Members box and press Ok.</p>
+<p>![data shot](<a class="reference external" href="http://docs.analytical-labs.com/img/magnify.png">http://docs.analytical-labs.com/img/magnify.png</a>)</p>
+<p># Axis Filtering</p>
+<p>The axis drop zone each have their own context menu on the label at the left. Within this context menu you will find submenus for filtering, limiting and sorting.</p>
+<p>## Axis Filter</p>
+<p>The axis filter allows you to add a custom MDX snippet to it. For example if I wanted to show all records where the Beverages amount was greater than 0 then I would add: [Product Department].Beverages &gt; 0 to the custom filter box and press Ok.</p>
+<p>## Limiting</p>
+<p>You can also limit the members returned in a query, this is useful if you wanted to look at just the top or bottom products in a query. If I wanted to see the top selling products I would select the dropdown and then limit and then Top 10. Similarly you can select Top 10, Bottom 10, Top 10 by; where you can select the dimension you want to use in the Top count, Bottom 10 by; where you can select the dimension you want to use in the Bottom count and Custom Limit where you can customise the limiting further by different filters, quantities and sorting.</p>
+<p>## Sorting</p>
+<p>Sorting allows you to sort the resultset, if you select the dropdown and go to sort you will see Ascending and Descending, this sorts as expected. Ascending and Descending Breaking Heirarchy allows you to sort with multiple dimensions on the axis and not follow their heirarchical order. Again there is a custom filter dialog for more advanced filtering usage.</p>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/using_saiku.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Meteorite BI.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/using_saiku.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

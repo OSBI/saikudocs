@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &#8212; Saiku Analytics 3.x documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Whilst we haven&#8217;t yet had the time or resource to create a lovely graphical admin console for you system administrators we have tried to make it simple for you to add new data sources to the Saiku platform.</p>
+<p># Data Source Definition</p>
+<p>All data sources are stored as plain text files in folder <cite>saiku-server/tomcat/webapps/saiku/WEB-INF/classes/saiku-datasources/</cite> with one data source per file. You can use your favourite text editor to add/edit data source.</p>
+<p>This is how sample data source for MySQL looks like:</p>
+<p><code class="docutils literal"><span class="pre">`</span>
+<span class="pre">`type=OLAP</span>
+<span class="pre">name=steelwheels</span>
+<span class="pre">driver=mondrian.olap4j.MondrianOlap4jDriver</span>
+<span class="pre">location=jdbc:mondrian:Jdbc=jdbc:mysql://localhost/sampledata;Catalog=res:foodmart/Foodmart.xml;JdbcDrivers=com.mysql.jdbc.Driver;</span>
+<span class="pre">username=dbuser</span>
+<span class="pre">password=password</span>
+<span class="pre">`</span>
+<span class="pre">`</span></code>
+Every data source definition contains at least the following elements:</p>
+<ul class="simple">
+<li><cite>type</cite> - Always OLAP.</li>
+<li><cite>name</cite> - Name of data source. This name will be shown to Saiku user together with schema name. Can contain spaces.</li>
+<li><cite>driver</cite> - Driver for specific database. See examples below to find correct driver for your data.</li>
+<li><cite>location</cite> - Location of data and Mondrian schema (see Location Details).</li>
+<li><cite>username</cite> - Username to be used when connecting to data source.</li>
+<li><cite>password</cite> - Password to be used when connecting to data source.</li>
+</ul>
+<p>## Location Details</p>
+<p>For MySQL, PostgreSQL and DB2 you have to define the following in <cite>location</cite>:</p>
+<p>JDBC connection stringMondrian schema destinationJDBC driver name### JDBC Connection String</p>
+<p>The following describes JDBC connection string patterns for most common databases:</p>
+<ul class="simple">
+<li>MySQL: <cite>[jdbc:mysql://[database]() host]/[database name]</cite></li>
+<li>PostgreSQL: <cite>[jdbc:postgresql://[database]() host]:[port]/[database name]</cite></li>
+<li>DB2: <cite>[jdbc:db2://[database]() host]:[port]/[DATABASE NAME]</cite></li>
+</ul>
+<p>### Mondrian Schema Destination</p>
+<p>Destination of Mondrian schema is specified using <cite>Catalog</cite> attribute. Destination must include full file name, including extension.</p>
+<p>Examples:</p>
+<ul class="simple">
+<li><cite>Catalog=[res:foodmart/Foodmart.xml](http://resfoodmart)</cite> will search for schema named <cite>Foodmart.xml</cite> in directory <cite>saiku-server/tomcat/webapps/saiku/WEB-INF/classes/foodmart</cite></li>
+<li><cite>Catalog=res:Foodmart.xml</cite> will search for schema named <cite>Foodmart.xml</cite> in directory <cite>saiku-server/tomcat/webapps/saiku/WEB-INF/classes/</cite></li>
+</ul>
+<p>### JDBC Driver Name</p>
+<ul class="simple">
+<li>MySQL: <cite>com.mysql.jdbc.Driver</cite></li>
+<li>PostgreSQL: <cite>org.postgresql.Driver</cite></li>
+<li>DB2: <cite>com.ibm.db2.jcc.DB2Driver</cite></li>
+</ul>
+<p># Adding a New JDBC Driver</p>
+<p>Obviously not everyone uses Hypersonic or MySQL to connect to their data warehouses. To use your specific database you will have to add new JDBC driver to Saiku:</p>
+<p>Get JDBC driver for your database.Add the JDBC connector jar file to <cite>saiku-server/tomcat/webapps/saiku/WEB-INF/lib/</cite>.Restart server.# Sample Data Sources</p>
+<p>## Mondrian on MySQL</p>
+<p><code class="docutils literal"><span class="pre">`</span>
+<span class="pre">`type=OLAP</span>
+<span class="pre">name=steelwheels</span>
+<span class="pre">driver=mondrian.olap4j.MondrianOlap4jDriver</span>
+<span class="pre">location=jdbc:mondrian:Jdbc=jdbc:mysql://localhost/sampledata;Catalog=res:foodmart/Foodmart.xml;JdbcDrivers=com.mysql.jdbc.Driver;</span>
+<span class="pre">username=dbuser</span>
+<span class="pre">password=password</span>
+<span class="pre">`</span>
+<span class="pre">`</span></code>
+## XML/A (Pentaho BI Server)</p>
+<p><code class="docutils literal"><span class="pre">`</span>
+<span class="pre">`type=OLAP</span>
+<span class="pre">name=xmla</span>
+<span class="pre">driver=org.olap4j.driver.xmla.XmlaOlap4jDriver</span>
+<span class="pre">location=jdbc:xmla:Server=http://localhost:8080/pentaho/Xmla?userid=joe&amp;password=password;</span>
+<span class="pre">username=joe</span>
+<span class="pre">password=password</span>
+<span class="pre">`</span>
+<span class="pre">`</span></code>
+## XML/A (PALO)</p>
+<p><code class="docutils literal"><span class="pre">`</span>
+<span class="pre">`type=OLAP</span>
+<span class="pre">name=xmla</span>
+<span class="pre">driver=org.olap4j.driver.xmla.XmlaOlap4jDriver</span>
+<span class="pre">location=jdbc:xmla:Server=http://localhost:4242/</span>
+<span class="pre">username=joe</span>
+<span class="pre">password=password</span>
+<span class="pre">`</span>
+<span class="pre">`</span></code>
+## Mondrian on PostgreSQL</p>
+<p><code class="docutils literal"><span class="pre">`</span>
+<span class="pre">`type=OLAP</span>
+<span class="pre">name=db_name</span>
+<span class="pre">driver=mondrian.olap4j.MondrianOlap4jDriver</span>
+<span class="pre">location=jdbc:mondrian:Jdbc=jdbc:postgresql://localhost:5432/db_name;Catalog=res:foodmart/Foodmart.xml;JdbcDrivers=org.postgresql.Driver;</span>
+<span class="pre">username=db_user_name</span>
+<span class="pre">password=db_password</span>
+<span class="pre">`</span>
+<span class="pre">`</span></code>
+JDBC driver for PostgreSQL can be downloaded here: [<a class="reference external" href="http://jdbc.postgresql.org/download.html](http://jdbc.postgresql.org/download.html">http://jdbc.postgresql.org/download.html](http://jdbc.postgresql.org/download.html</a>)</p>
+<p>## XML/A (Microsoft SSAS)</p>
+<p>__Note__: you need to install the [mdmdpump.dll](<a class="reference external" href="http://technet.microsoft.com/en-us/library/cc917711.aspx">http://technet.microsoft.com/en-us/library/cc917711.aspx</a>) and then configure access.</p>
+<p><code class="docutils literal"><span class="pre">`</span>
+<span class="pre">`type=OLAP</span>
+<span class="pre">name=xmla</span>
+<span class="pre">driver=org.olap4j.driver.xmla.XmlaOlap4jDriver</span>
+<span class="pre">location=jdbc:xmla:Server=http://192.168.0.1/olap/msmdpump.dll</span>
+<span class="pre">username=joe</span>
+<span class="pre">password=password</span>
+<span class="pre">`</span>
+<span class="pre">`</span></code>
+## DB2</p>
+<p>Note With DB2, schema files must define tables, views and columns in UPPER CASE. DB2 is case sensitive. If you specify a table or column name without double-quotes, it is converted to upper case. This happens in both a CREATE TABLE statement and in SELECT statements. The solution is either to use double-quotes when creating your schema (so your table will be called czas) or to specify the table and column names in upper-case in your mondrian schema file.</p>
+<p><code class="docutils literal"><span class="pre">`</span>
+<span class="pre">`type=OLAP</span>
+<span class="pre">name=datasource_name</span>
+<span class="pre">driver=mondrian.olap4j.MondrianOlap4jDriver</span>
+<span class="pre">location=jdbc:mondrian:Jdbc=jdbc:db2://servername:port/SAMPLE;Catalog=res:foodmart/Foodmart.xml;JdbcDrivers=com.ibm.db2.jcc.DB2Driver;</span>
+<span class="pre">username=username</span>
+<span class="pre">password=password</span>
+<span class="pre">`</span>
+<span class="pre">`</span></code></p>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/data_sources.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Meteorite BI.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/data_sources.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
