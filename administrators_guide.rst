@@ -16,3 +16,6 @@ Saiku 3 has a new administrators console to remove as much of the XML editing as
    backups.rst
    migration.rst
    webdav.rst
+   safemode.rst
+   localization.rst
+   default_reports.rst
