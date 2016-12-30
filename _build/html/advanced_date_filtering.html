@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Advanced Date Filtering &#8212; Saiku Analytics 3.x documentation</title>
+    
+    <link rel="stylesheet" href="_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Conditional Formatting" href="conditional_formatting.html" />
+    <link rel="prev" title="Schema" href="schema.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="conditional_formatting.html" title="Conditional Formatting"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="schema.html" title="Schema"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="schema.html" accesskey="U">Schema</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="advanced-date-filtering">
+<h1>Advanced Date Filtering<a class="headerlink" href="#advanced-date-filtering" title="Permalink to this headline">¶</a></h1>
+<p>Enterprise Edition Only
+Saiku now supports advanced date filters, allowing you to do dynamic date ranges like Last x Periods, Yesterday, Today etc. To take advantage of these features you need to make some adjustments to your schema so Saiku knows how to apply the filters.</p>
+<p>Firstly to use the Last Periods, and quick date selectors, you need to implement the Pentaho defined AnalyzerDateFormat. This format allows us to see how your date dimension is structured on any given level. So for example:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;Hierarchy</span> <span class="na">name=</span><span class="s">&quot;Time&quot;</span> <span class="na">hasAll=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;Level</span> <span class="na">attribute=</span><span class="s">&quot;Year&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Annotations&gt;</span>
+        <span class="nt">&lt;Annotation</span> <span class="na">name=</span><span class="s">&quot;AnalyzerDateFormat&quot;</span><span class="nt">&gt;</span>[yyyy]<span class="nt">&lt;/Annotation&gt;</span>
+      <span class="nt">&lt;/Annotations&gt;</span>
+   <span class="nt">&lt;/Level&gt;</span>
+   <span class="nt">&lt;Level</span> <span class="na">attribute=</span><span class="s">&quot;Quarter&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Annotations&gt;</span>
+        <span class="nt">&lt;Annotation</span> <span class="na">name=</span><span class="s">&quot;AnalyzerDateFormat&quot;</span><span class="nt">&gt;</span>[yyyy].[Qq]<span class="nt">&lt;/Annotation&gt;</span>
+      <span class="nt">&lt;/Annotations&gt;</span>
+   <span class="nt">&lt;/Level&gt;</span>
+   <span class="nt">&lt;Level</span> <span class="na">attribute=</span><span class="s">&quot;Month&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;Annotations&gt;</span>
+       <span class="nt">&lt;Annotation</span> <span class="na">name=</span><span class="s">&quot;AnalyzerDateFormat&quot;</span><span class="nt">&gt;</span>[yyyy].[Qq].[mm]<span class="nt">&lt;/Annotation&gt;</span>
+     <span class="nt">&lt;/Annotations&gt;</span>
+   <span class="nt">&lt;/Level&gt;</span>
+ <span class="nt">&lt;/Hierarchy&gt;</span>
+ <span class="nt">&lt;Hierarchy</span> <span class="na">name=</span><span class="s">&quot;Weekly&quot;</span> <span class="na">hasAll=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;Level</span> <span class="na">attribute=</span><span class="s">&quot;Year&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;Annotations&gt;</span>
+       <span class="nt">&lt;Annotation</span> <span class="na">name=</span><span class="s">&quot;AnalyzerDateFormat&quot;</span><span class="nt">&gt;</span>[yyyy]<span class="nt">&lt;/Annotation&gt;</span>
+     <span class="nt">&lt;/Annotations&gt;</span>
+   <span class="nt">&lt;/Level&gt;</span>
+   <span class="nt">&lt;Level</span> <span class="na">attribute=</span><span class="s">&quot;Week&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;Annotations&gt;</span>
+       <span class="nt">&lt;Annotation</span> <span class="na">name=</span><span class="s">&quot;AnalyzerDateFormat&quot;</span><span class="nt">&gt;</span>[yyyy].[Qq].[ww]<span class="nt">&lt;/Annotation&gt;</span>
+     <span class="nt">&lt;/Annotations&gt;</span>
+   <span class="nt">&lt;/Level&gt;</span>
+   <span class="nt">&lt;Level</span> <span class="na">attribute=</span><span class="s">&quot;Day&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;Annotations&gt;</span>
+      <span class="nt">&lt;Annotation</span> <span class="na">name=</span><span class="s">&quot;AnalyzerDateFormat&quot;</span><span class="nt">&gt;</span>[yyyy].[Qq].[ww].[dd]<span class="nt">&lt;/Annotation&gt;</span>
+     <span class="nt">&lt;/Annotations&gt;</span>
+   <span class="nt">&lt;/Level&gt;</span>
+  <span class="nt">&lt;/Hierarchy&gt;</span>
+</pre></div>
+</div>
+<p>As you can see from the above snippet, on each level we declare how the MDX would look if you were to hand write the query but instead of putting dates in we just put the format of the levels in. The query then replaces these annotations with actual dates when the query is run. This means that when you reopen the query a new date is entered and as such, they are dynamic.</p>
+<p>Secondly we have the Operator date selector which allows us to select from different date ranges which are not dynamic but frequently used. For example between, after, before and does not equal. This part of the dialog is controlled by the SaikuDayFormatString annotation.
+As you can see in the snippet, we apply this only to a day level. SaikuDateProperty refers to a member property you have defined in your schema which is a date string. yyyy/mm/dd, dd/mm/yyyy etc and the SaikuDayFormatString annotation is the format the dates are in.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;Level</span> <span class="na">attribute=</span><span class="s">&quot;Day&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;Annotations&gt;</span>
+     <span class="nt">&lt;Annotation</span> <span class="na">name=</span><span class="s">&quot;AnalyzerDateFormat&quot;</span><span class="nt">&gt;</span>[yyyy].[Qq].[ww].[dd]<span class="nt">&lt;/Annotation&gt;</span>
+     <span class="nt">&lt;Annotation</span> <span class="na">name=</span><span class="s">&quot;SaikuDayFormatString&quot;</span><span class="nt">&gt;</span>yyyy/mm/dd<span class="nt">&lt;/Annotation&gt;</span>
+   <span class="nt">&lt;/Annotations&gt;</span>
+<span class="nt">&lt;/Level&gt;</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="schema.html"
+                        title="previous chapter">Schema</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="conditional_formatting.html"
+                        title="next chapter">Conditional Formatting</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/advanced_date_filtering.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="conditional_formatting.html" title="Conditional Formatting"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="schema.html" title="Schema"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="schema.html" >Schema</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Meteorite BI.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

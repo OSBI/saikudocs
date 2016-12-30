@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Data Source Management &#8212; Saiku Analytics 3.x documentation</title>
+    
+    <link rel="stylesheet" href="_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Connecting To Microsoft Analysis Server" href="connecting_to_microsoft_analysis_server.html" />
+    <link rel="prev" title="User Management" href="user_management.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="connecting_to_microsoft_analysis_server.html" title="Connecting To Microsoft Analysis Server"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="user_management.html" title="User Management"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="administrators_console.html" accesskey="U">Administrators Console</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="data-source-management">
+<h1>Data Source Management<a class="headerlink" href="#data-source-management" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="schema-upload">
+<h2>Schema Upload<a class="headerlink" href="#schema-upload" title="Permalink to this headline">¶</a></h2>
+<p>All Saiku connections require a Mondrian schema definition to tell Saiku how the database maps to a cube.
+To find out more about schema design I would read some of the resources available on the internet, for example: <a class="reference external" href="http://type-exit.org/adventures-with-open-source-bi/2010/07/a-basic-mondrian-cube-introducing-the-star-schema/">http://type-exit.org/adventures-with-open-source-bi/2010/07/a-basic-mondrian-cube-introducing-the-star-schema/</a>.</p>
+<p>Once you have designed your cube you can then upload it to the Saiku server, to do this you need to login as an administrator and go to the Administration console. Then click on the Add Schema button on the left pane. In the main window click the browse button and select your schema file. Next enter a unique name for this schema and then press the upload button. Assuming all goes well you will see an okay message and the new schema listed in the left hand panel.</p>
+</div>
+<div class="section" id="remove-old-schemas">
+<h2>Remove Old Schemas<a class="headerlink" href="#remove-old-schemas" title="Permalink to this headline">¶</a></h2>
+<p>To remove an old schema select the schema from the list on the left hand side, and then in the main screen click the Remove button. Your schema will then be removed from the server.</p>
+</div>
+<div class="section" id="data-source-creation">
+<h2>Data Source Creation<a class="headerlink" href="#data-source-creation" title="Permalink to this headline">¶</a></h2>
+<p>Once you have a valid schema available and uploaded to the server, you can then create a data source.</p>
+<p>In the Administration Console you click on the Add Data Source button in the left panel. Once this is done you then give the data source a unique name, and if you are wanting to use the embedded Mondrian server you select the Mondrian connection type, if you are wanting to connect to a MSAS/Essbase or remote Mondrian server (or anything else that speaks XML/A) you can select XMLA from the connection type dropdown.</p>
+<p>Next you enter the JDBC or XMLA url to the server, this depends on the database type so you will have to consult your documentation, here are a few examples:</p>
+<p><cite>jdbc:mysql://localhost/foodmart</cite></p>
+<p><cite>jdbc:h2:../../data/foodmart</cite></p>
+<p><cite>jdbc:postgresql://localhost/foodmart</cite></p>
+<p>you get the idea.</p>
+<p>In the next box you need to select the schema that is valid for this database, and then your JDBC driver for example:</p>
+<p><cite>org.h2.Driver</cite></p>
+<p><cite>com.mysql.jdbc.Driver</cite></p>
+<p><cite>org.postgresql.Driver</cite></p>
+<p>You also need to make sure that the driver is available to the Saiku server by adding it to the tomcat classpath if it is not already available. To do this you can place it in tomcat/webapps/saiku/WEB-INF/lib and then restart the Saiku server.</p>
+<p>Finally you need to add the username and password for the database you are connecting to and then click save. You should then see the data source listed in the list on the left hand panel.</p>
+<p>If you are a Saiku 2.x user and you already have a number data sources available in a text file, or you want to add some details that require extra configuration on the commend line, you can click the Advanced button and enter the details into the text box instead of the input fields.</p>
+<p>![](wiki-attachment:datasource.png)</p>
+</div>
+<div class="section" id="remove-data-source">
+<h2>Remove Data Source<a class="headerlink" href="#remove-data-source" title="Permalink to this headline">¶</a></h2>
+<p>If you no longer require a data source you can select it from the list on the left hand panel and then click Remove from the main window, this will remove the data source from the system.</p>
+</div>
+<div class="section" id="refresh-data-source-cache">
+<h2>Refresh Data Source Cache<a class="headerlink" href="#refresh-data-source-cache" title="Permalink to this headline">¶</a></h2>
+<p>Saiku will by default cache the data returned from queries to improve performance where possible. If you update the data available within the data base you can tell it to refresh the database cache by selecting the data source from the list and then clicking the Refresh Cache button.</p>
+</div>
+<div class="section" id="advanced-data-source-definitions">
+<h2>Advanced Data Source Definitions<a class="headerlink" href="#advanced-data-source-definitions" title="Permalink to this headline">¶</a></h2>
+<p>Saiku 3.x also accepts old style data source definitions with some minor changes because of the JCR repository. Once you have a schema uploaded you can then click the Add Data Source button and then Advanced. At this point you will be presented with a large text area field.</p>
+<p>A Saiku 3 advanced data source looks like this:</p>
+<p><cite>type=OLAP
+name=dsname
+driver=mondrian.olap4j.MondrianOlap4jDriver
+location=jdbc:mondrian:Jdbc=jdbc:jtds:sqlserver://localhost:1433/database;Catalog=mondrian:///datasources/myschema.xml;JdbcDrivers=net.sourceforge.jtds.jdbc.Driver;
+username=sa
+password=password</cite></p>
+<p>As you can see, it looks very much like the Saiku 2.x data source except the catalog path has changed to a mondrian:// VFS pointer.</p>
+</div>
+<div class="section" id="securing-data-with-roles">
+<h2>Securing data with roles<a class="headerlink" href="#securing-data-with-roles" title="Permalink to this headline">¶</a></h2>
+<p>Saiku can restrict access to data at row level by applying role based security to your data source. To do this you need to define an Advanced datasource and apply the following:</p>
+<p><cite>security.enabled=true
+security.type=lookup
+security.mapping=ROLE_ADMIN=No HR Cube</cite></p>
+<p>Line 1 is self explanatory</p>
+<p>Line 2 is the type of mapping, you can use lookup which will attempt to map Spring roles to Mondrian roles defined in the security.mapping row, or you can use one2one which will attempt to lookup the users roles defined in Saiku within the cube definition and apply those as security. If you are using XMLA you can also use passthrough, which will pass the security on to the XMLA provider.</p>
+<p>Line 3 is if you use lookup type, this allows you to map Saiku roles to cube roles, so in this example the users who have the role ROLE_ADMIN will be mapped to the No HR Cube role within the schema defintion which looks like:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;Role</span> <span class="na">name=</span><span class="s">&#39;No HR Cube&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;SchemaGrant</span> <span class="na">access=</span><span class="s">&#39;all&#39;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;CubeGrant</span> <span class="na">cube=</span><span class="s">&#39;HR&#39;</span> <span class="na">access=</span><span class="s">&#39;none&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/SchemaGrant&gt;</span>
+<span class="nt">&lt;/Role&gt;</span>
+</pre></div>
+</div>
+<p>As you can see this role prevents access to the whole HR cube.</p>
+</div>
+<div class="section" id="additonal-connection-techniques">
+<h2>Additonal Connection Techniques<a class="headerlink" href="#additonal-connection-techniques" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="connecting_to_microsoft_analysis_server.html">Connecting To Microsoft Analysis Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connect_saiku_to_mssql_with_instance_names.html">Connect Saiku To Mssql With Instance Names</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Data Source Management</a><ul>
+<li><a class="reference internal" href="#schema-upload">Schema Upload</a></li>
+<li><a class="reference internal" href="#remove-old-schemas">Remove Old Schemas</a></li>
+<li><a class="reference internal" href="#data-source-creation">Data Source Creation</a></li>
+<li><a class="reference internal" href="#remove-data-source">Remove Data Source</a></li>
+<li><a class="reference internal" href="#refresh-data-source-cache">Refresh Data Source Cache</a></li>
+<li><a class="reference internal" href="#advanced-data-source-definitions">Advanced Data Source Definitions</a></li>
+<li><a class="reference internal" href="#securing-data-with-roles">Securing data with roles</a></li>
+<li><a class="reference internal" href="#additonal-connection-techniques">Additonal Connection Techniques</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="user_management.html"
+                        title="previous chapter">User Management</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="connecting_to_microsoft_analysis_server.html"
+                        title="next chapter">Connecting To Microsoft Analysis Server</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/data_source_management.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="connecting_to_microsoft_analysis_server.html" title="Connecting To Microsoft Analysis Server"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="user_management.html" title="User Management"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="administrators_console.html" >Administrators Console</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Meteorite BI.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

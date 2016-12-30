@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dashboards &#8212; Saiku Analytics 3.x documentation</title>
+    
+    <link rel="stylesheet" href="_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Saiku Tips And Tricks" href="saiku_tips_and_tricks.html" />
+    <link rel="prev" title="Totals And Subtotals" href="totals_and_subtotals.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="saiku_tips_and_tricks.html" title="Saiku Tips And Tricks"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="totals_and_subtotals.html" title="Totals And Subtotals"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dashboards">
+<h1>Dashboards<a class="headerlink" href="#dashboards" title="Permalink to this headline">¶</a></h1>
+<p>Dashboards are reports that show a collection of sub reports on a single screen. These reports usually have something in common and allow users to see the bigger picture.</p>
+<div class="section" id="dashboard-design">
+<h2>Dashboard Design<a class="headerlink" href="#dashboard-design" title="Permalink to this headline">¶</a></h2>
+<p>You can create dashboards within Saiku using the Dashboard Designer that was released in Saiku Enterprise 3.2. To create a dashboard, the first thing that is required are some saved queries created using the regular Saiku query designer. Once you have your required queries you can then create dashboards by clicking on the Create Dashboard button on the splash screen.</p>
+<p>You will be greeted with a prompt asking if you want to create a new dashboard or open an existing one. Click on New and another dialog will open asking how many widgets you would like to have by default in the new dashboard. This isn&#8217;t a fixed amount you can add or remove widgets later. Once you have entered the number of widgets and click create the blank dashboard will be created.</p>
+<p>As you can see in the above screenshot we have a basic dashboard with a 2x2 grid. To add new widgets you can click on the Create Widget icon in the toolbar, to remove widget click on the widgets cog icon and click Remove Widget.</p>
+</div>
+<div class="section" id="filtering-reports">
+<h2>Filtering Reports<a class="headerlink" href="#filtering-reports" title="Permalink to this headline">¶</a></h2>
+<p>Of course just viewing the report might not provide the best insight into your data, and as such a filter might be needed to help you display different areas of your business. To add a filter, first you must add a parameter to your Saiku report. You can do this in the selections dialog and when you save this parameter it is then picked up and used by the dashboard designer.</p>
+<p>Once you have added this report to your dashboard you can then see the Filter button enabled within the cog context menu. If you select that you can then choose which filter(if you have more than one) you would like to configure.</p>
+<p>From the filter edit dialog you can give the filter a label so people understand the context. You also need to select the type, currently are Radio Button, Text Box, Dropdown and Dropdown Multiselect. If you have lots of values you might want Dropdown or Dropdown Multiselect if you just have a few the Radio Button dialog might be better, or if you want a user to type in a value just select Text Box.
+In the Content section you can then define if you want a user generated list of values or lookup the values from the data warehouse.
+If you click create list you are shown the following dialog</p>
+<p>This lets you simply add elements to a list of values that the user can the choose from.
+If you select lookup you are shown the following</p>
+<p>From here you can select Current Level which will lookup the values available to you from the current level in the query, this is the normal selection, if you would like to override it you can also select the override radio button. From here you can then select the schema, cube, dimension, hierarchy and level that the selection list is create from.
+Once you have the filter created press the save button and you are returned to the dashboard edit screen.</p>
+</div>
+<div class="section" id="viewing">
+<h2>Viewing<a class="headerlink" href="#viewing" title="Permalink to this headline">¶</a></h2>
+<p>To view a dashboard, in edit mode you can press the Show Dashboards button. This will open the dashboard in View mode and allow you to click around with it.
+If you aren&#8217;t in Edit mode opening a new dashboard is simple. Click on the create dashboard icon on the splash screen</p>
+<p>Then in the next dialog press the open button and find the saved dashboard.</p>
+<p>When you select a dashboard you can see 4 buttons at the bottom of the open dialog. Edit puts you back into edit mode. View (New Tab) will open the dashboard within the Saiku UI like any other Saiku Report. View (New Window) will open the dashboard in a new browser tab or window which maximises screen space and gets rid of other UI elements.
+To filter a dashboard click on the Filter icon in the top left and the filter bar will pop out allowing you to refine the data you are viewing.</p>
+</div>
+<div class="section" id="adding-content">
+<h2>Adding Content<a class="headerlink" href="#adding-content" title="Permalink to this headline">¶</a></h2>
+<p>Once you have a grid organised you can then add content to your dashboard. To do this find the report you want to add in the tree on the left hand navigation window.</p>
+<p>Then drag the report from the left hand panel to a widget in the main dashboard and drop it. This will then give you a table view of the report you have just added to the dashboard.</p>
+<p>As you can see this widget isn&#8217;t big enough to display the whole table, so we can adjust the widget size by dragging the resize handle in the bottom right corner of the widget.</p>
+<p>You can remove reports from widgets by clicking on the cog icon and clicking the Remove Report menu item.
+Of course, we are dealing with graphical dashboards, so a table may not be the best way of displaying the information in the query. In this case we can switch from table mode to chart mode. To do this click on the cog icon and in the Render Type menu select Chart and then if you want to override the default chart type select the chart type you would like to use.
+You should now see your report rendered as a chart.</p>
+</div>
+<div class="section" id="adding-embed-code">
+<h2>Adding Embed Code<a class="headerlink" href="#adding-embed-code" title="Permalink to this headline">¶</a></h2>
+<p>To add a JavaScript code, add a report to the widget and open the context menu and click &#8220;Embed Code&#8221;. This screen should appear for you:</p>
+<p>In the text field &#8220;External Resources&#8221;, you must add the URI of the external JavaScript libraries, as in this example:</p>
+<p>In the field &#8220;JavaScript&#8221;, you&#8217;ll add your custom JS code, see example:</p>
+<p>Then click the &#8220;Run&#8221; button and your code will run.</p>
+<p>To retrieve the Saiku data, you must add the syntax correctly in your JavaScript code. See more information below.
+Adding Embed Code (styling table)
+It is also possible add some CSS styles in your table.</p>
+<p>(info) SEE OTHER EXAMPLES HERE.
+Example of data returned from Saiku
+This is an example of Saiku data, you must understand how it is structured, for a better understanding with the syntax that will be used in the JavaScript code.
+ROWS (11/21)
+[0]  { &#8220;name&#8221;: &#8220;Pearl Chardonnay Wine&#8221;, &#8220;data&#8221;: [210, 54.28, 136.5] },
+[1]  { &#8220;name&#8221;: &#8220;Pearl Imported Beer&#8221;, &#8220;data&#8221;: [175, 63.12, 159.25] },
+[2]  { &#8220;name&#8221;: &#8220;Walrus Light Beer&#8221;, &#8220;data&#8221;: [187, 191.12, 484.33] },
+[3]  { &#8220;name&#8221;: &#8220;Good White Zinfandel Wine&#8221;, &#8220;data&#8221;: [159, 247.85, 621.69] },
+[4]  { &#8220;name&#8221;: &#8220;Good Light Beer&#8221;, &#8220;data&#8221;: [115, 100.04, 250.7] },
+[5]  { &#8220;name&#8221;: &#8220;Pearl Light Wine&#8221;, &#8220;data&#8221;: [198, 46.07, 112.86] },
+[6]  { &#8220;name&#8221;: &#8220;Pearl Chardonnay&#8221;, &#8220;data&#8221;: [189, 131.7, 328.86] },
+[7]  { &#8220;name&#8221;: &#8220;Portsmouth Light Beer&#8221;, &#8220;data&#8221;: [175, 259.92, 663.25] },
+[8]  { &#8220;name&#8221;: &#8220;Portsmouth Imported Beer&#8221;, &#8220;data&#8221;: [187, 152.32, 403.92] },
+[9]  { &#8220;name&#8221;: &#8220;Good Imported Beer&#8221;, &#8220;data&#8221;: [154, 98.17, 249.48] },
+[10] { &#8220;name&#8221;: &#8220;Pearl Chablis Wine&#8221;, &#8220;data&#8221;: [209, 231.12, 560.12] }
+...
+COLS (4)
+[0] &#8220;Product Name&#8221;,
+[1] &#8220;Unit Sales&#8221;,
+[2] &#8220;Store Cost&#8221;,
+[3] &#8220;Store Sales&#8221;
+Syntax (to add in code JS)
+Syntax
+Description
+{IDPANEL}
+Returns the id of the respective widget, for example:
+$(&#8216;#{IDPANEL}&#8217;).highcharts(...);
+{ROWS_name_VALUES}
+or
+{ROWS_data_VALUES}
+Returns an array of values of the object ROWS, for example:
+{ROWS_name_VALUES}
+&gt;&gt; [&#8220;Pearl Chardonnay Wine&#8221;, &#8220;Pearl Imported Beer&#8221;, &#8220;Walrus Light Beer&#8221;, &#8220;Good White Zinfandel Wine&#8221;]
+{ROWS_data_VALUES}
+&gt;&gt; [[210, 54.28, 136.5], [175, 63.12, 159.25], [187, 191.12, 484.33], [159, 247.85, 621.69]]
+{COLS_name_VALUES}
+Returns an array of values of the object COLS, for example:
+{COLS_name_VALUES}
+&gt;&gt; [&#8220;Product Name&#8221;, &#8220;Unit Sales&#8221;, &#8220;Store Cost&#8221;, &#8220;Store Sales&#8221;]
+{ROWS_name_data_EMPTY_name_data}
+Returns an object with names and data (or just names or data), for example:
+{ROWS_name_data_EMPTY_name_data}
+&gt;&gt;
+{ &#8220;name&#8221;: &#8220;Pearl Chardonnay Wine&#8221;, &#8220;data&#8221;: [210, 54.28, 136.5] },
+{ &#8220;name&#8221;: &#8220;Pearl Imported Beer&#8221;, &#8220;data&#8221;: [175, 63.12, 159.25] },
+{ &#8220;name&#8221;: &#8220;Walrus Light Beer&#8221;, &#8220;data&#8221;: [187, 191.12, 484.33] },
+{ &#8220;name&#8221;: &#8220;Good White Zinfandel Wine&#8221;, &#8220;data&#8221;: [159, 247.85, 621.69] }</p>
+<p>{ROWS_name_EMPTY_name}
+&gt;&gt;
+{ &#8220;name&#8221;: &#8220;Pearl Chardonnay Wine&#8221; },
+{ &#8220;name&#8221;: &#8220;Pearl Imported Beer&#8221; },
+{ &#8220;name&#8221;: &#8220;Walrus Light Beer&#8221; },
+{ &#8220;name&#8221;: &#8220;Good White Zinfandel Wine&#8221; }</p>
+<p>{ROWS_data_EMPTY_data}
+&gt;&gt;
+{ &#8220;data&#8221;: [210, 54.28, 136.5] },
+{ &#8220;data&#8221;: [175, 63.12, 159.25] },
+{ &#8220;data&#8221;: [187, 191.12, 484.33] },
+{ &#8220;data&#8221;: [159, 247.85, 621.69] }</p>
+<p>{ROWS_product_value_EMPTY_name_data}
+&gt;&gt;
+{ &#8220;name&#8221;: &#8220;Pearl Chardonnay Wine&#8221;, &#8220;data&#8221;: [210, 54.28, 136.5] },
+{ &#8220;name&#8221;: &#8220;Pearl Imported Beer&#8221;, &#8220;data&#8221;: [175, 63.12, 159.25] },
+{ &#8220;name&#8221;: &#8220;Walrus Light Beer&#8221;, &#8220;data&#8221;: [187, 191.12, 484.33] },
+{ &#8220;name&#8221;: &#8220;Good White Zinfandel Wine&#8221;, &#8220;data&#8221;: [159, 247.85, 621.69] }</p>
+<p>The name EMPTY is very important, because it is an escape word.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Dashboards</a><ul>
+<li><a class="reference internal" href="#dashboard-design">Dashboard Design</a></li>
+<li><a class="reference internal" href="#filtering-reports">Filtering Reports</a></li>
+<li><a class="reference internal" href="#viewing">Viewing</a></li>
+<li><a class="reference internal" href="#adding-content">Adding Content</a></li>
+<li><a class="reference internal" href="#adding-embed-code">Adding Embed Code</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="totals_and_subtotals.html"
+                        title="previous chapter">Totals And Subtotals</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="saiku_tips_and_tricks.html"
+                        title="next chapter">Saiku Tips And Tricks</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/dashboards.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="saiku_tips_and_tricks.html" title="Saiku Tips And Tricks"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="totals_and_subtotals.html" title="Totals And Subtotals"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Meteorite BI.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

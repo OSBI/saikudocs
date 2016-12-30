@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Filtering &#8212; Saiku Analytics 3.x documentation</title>
+    
+    <link rel="stylesheet" href="_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Charts And Graphs" href="charts_and_graphs.html" />
+    <link rel="prev" title="Creating A Query" href="creating_a_query.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="charts_and_graphs.html" title="Charts And Graphs"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="creating_a_query.html" title="Creating A Query"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="filtering">
+<h1>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Filtering Overview</p>
+<p>There are a number of ways of refining the data you see from your query these include filtering the dimension members that appear in the resultset or using the Filter axis.
+A Saiku query has 4 drop zones to help you define your query, Measures, Columns, Rows and Filter. The filter axis allows you to filter what is visible in the result but using dimensions that aren&#8217;t displayed on the table, for example, you may want to show store sales by region on a table, but only for 2014, and as such you would add the time dimension to the Filter axis. But, for example, if you wanted to show Q1 sales year on year, you would put the Year and Quarter levels on to the rows or columns axis, this means they would then show up in the table.</p>
+<p>To select particular rows of data(members) then you need to click on the label in the dropbox to get the Filter popup dialog. Once you see this you can then select the members you want to see and move them to the selected side on the right and click the Ok button. When you press Ok the dialog will close and the query will be executed with the new filters in place.</p>
+</div>
+<div class="section" id="advanced">
+<h2>Advanced<a class="headerlink" href="#advanced" title="Permalink to this headline">¶</a></h2>
+<p>Include / Exclude
+Saiku now supports include &amp; exclude within the filter dialog, which makes the filtering far more flexible on moving data sets. For example, you might just want to exclude 2 members, rather than include a fixed list which might need updating when your dimensions are updated.
+To exclude just add the members you want to exclude to the filter area and then instead of selecting the Include radio button, select the exclude button instead.</p>
+<p>Searching and Pre-Filtering on Server
+If you have large dimensions, Saiku pre filters them on the server to improve user interface performance. This list on the left may be truncated because it would be too long and cause your browser to hang. To filter you can use the Search box at the top of the filter dialog.</p>
+<p>You know if your filter dialog is being filtered when the Items: count equals the Display Limit count. The limit is adjustable by the administrator by looking in the Settings file</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Filtering</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#advanced">Advanced</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="creating_a_query.html"
+                        title="previous chapter">Creating A Query</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="charts_and_graphs.html"
+                        title="next chapter">Charts And Graphs</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/filtering.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="charts_and_graphs.html" title="Charts And Graphs"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="creating_a_query.html" title="Creating A Query"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Meteorite BI.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

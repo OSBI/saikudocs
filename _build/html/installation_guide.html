@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation Guide &#8212; Saiku Analytics 3.x documentation</title>
+    
+    <link rel="stylesheet" href="_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Deploy Saiku UI Under A Different Path" href="deploy_saiku_ui_under_a_different_path.html" />
+    <link rel="prev" title="Introduction" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="deploy_saiku_ui_under_a_different_path.html" title="Deploy Saiku UI Under A Different Path"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installation-guide">
+<h1>Installation Guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deploy_saiku_ui_under_a_different_path.html">Deploy Saiku UI Under A Different Path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saiku_enterprise_manual_deployment.html">Saiku Enterprise Manual Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade.html">Upgrade</a></li>
+</ul>
+</div>
+<div class="section" id="saiku-enterprise-edition">
+<h2>Saiku Enterprise Edition<a class="headerlink" href="#saiku-enterprise-edition" title="Permalink to this headline">¶</a></h2>
+<p>Requirements
+Saiku has very few requirements, it will run in less than 1GB of RAM, and will run on any computer running Java.
+Currently the only prerequisite is JDK7.
+Downloading Saiku Enterprise Edition
+To install Saiku Enterprise Edition the first job is to download the installer and create a license from our licensing portal.
+You license is tied to your server hostname and as such you need to make sure you provide the correct hostname, this is not the url you connect to your server with but the dns hostname.
+To find your hostname on Linux/Mac open a shell and type
+hostname
+On windows you need to run
+ipconfig /all
+Running the installer
+The installer is an executable jar file, on most operating systems you should be able to double click and run the file, this will pop up the first page of the installer. If you are wanting to install Saiku Enterprise on a remote server, or a computer without a graphics card, you can run
+java -jar ./saikuinstaller-x.y.z.jar -console
+and you will be given a text based installer.
+If you are installing in console mode when you get to the screen asking for the license, pass it the path to the license file. For example if you put the license in /tmp the path would be /tmp/license.lic
+Once the installer is complete it will then start Saiku server and you should be able to find a login screen at <a class="reference external" href="http://servername:8080/">http://servername:8080/</a>.
+To login to the standard install you will be able to login with admin/admin.
+If for some reason you do not see a login screen, look in
+installation directory/server/tomcat/logs/catalina.out
+This will contain any errors that occurred during the server startup.</p>
+</div>
+<div class="section" id="saiku-community-edition">
+<h2>Saiku Community Edition<a class="headerlink" href="#saiku-community-edition" title="Permalink to this headline">¶</a></h2>
+<p>This guide should help you when installing Saiku 3.0 for the first time.
+Installation:
+Make sure you have a version of JDK 7 installed.
+Check that the JAVA_HOME environment variable is set.
+Download the zip or gzip file for Saiku
+Unzip the archive to your desired location.
+Running Saiku 3.0 for the first time:
+Open a command prompt or terminal.
+Navigate to where the installer copied the files
+Execute either start-saiku.sh or start-saiku.bat ( depending or your operating system ).
+Open a browser and navigate to the URL: <a class="reference external" href="http:/">http:/</a>/&lt;server-name-or-ip&gt;:8080/
+You should be greeted by the Saiku login page.
+To login to Saiku you will need a free license. You can get this <a class="reference external" href="http://licensing.meteorite.bi">http://licensing.meteorite.bi</a>
+Things to check if you&#8217;re having problems:
+Are you using JDK7?
+Is the JAVA_HOME variable set in the OS?
+Is port 8080 blocked in the firewall?</p>
+</div>
+<div class="section" id="other-methods">
+<h2>Other Methods<a class="headerlink" href="#other-methods" title="Permalink to this headline">¶</a></h2>
+<p>Docker Image
+We supply Saiku Community Edition as a docker image for easy deployment. To deploy Saiku run:
+docker pull buggtb/saikuce
+for Saiku Community Edition and it will pull down the latest snapshot build.
+Or for enterprise run:
+docker pull buggtb/saikueeofficial
+and it will install the latest stable release.
+Saiku will run a full server on port 8080 on the running docker container.
+Juju Charm
+Meteorite BI have teamed up with Canonical to get Saiku Analytics into the Juju Charm Store, whilst we work on finishing up the acceptance you can still test the Saiku CE Juju charm by running:
+juju deploy tomcat
+juju deploy cs:~f-tom-n/trusty/saikuanalytics
+juju add-relation saikuanalytics tomcat
+juju expose tomcat
+Again, this will run Saiku on Tomcat, the default port is 8080.</p>
+</div>
+<div class="section" id="pentaho-plugin">
+<h2>Pentaho Plugin<a class="headerlink" href="#pentaho-plugin" title="Permalink to this headline">¶</a></h2>
+<p>To install Saiku EE plugin, do this via the Pentaho Marketplace. This one click install will install the EE plugin and set it up ready for use after a server restart.
+The Pentaho plugin has 2 items that need configuring.
+To install the license you can place it in ~/.pentaho or pentaho-solutions/system/saiku/ named license.lic. If you install it in ~/.pentaho of course it will survive re-installation which can make administration easier.
+The other item that needs configuring is the user file. For named user licenses you need to configure the users allowed to login with your license. So if you purchased a single user, you can enter a single username, if you purchased 100 users, you can enter 100 user names etc. This file can be located in the same place as the license and is called users.txt. In this file enter a username per row, so for the pentaho default users you&#8217;d have:
+joe
+suzy
+pat
+tiffany</p>
+<p>Make sure the file ends with a blank line. Once these are configured, you can log out and back into the Pentaho BI server and the new license and users configuration will be picked up by the Saiku plugin.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation Guide</a><ul>
+<li><a class="reference internal" href="#saiku-enterprise-edition">Saiku Enterprise Edition</a></li>
+<li><a class="reference internal" href="#saiku-community-edition">Saiku Community Edition</a></li>
+<li><a class="reference internal" href="#other-methods">Other Methods</a></li>
+<li><a class="reference internal" href="#pentaho-plugin">Pentaho Plugin</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="deploy_saiku_ui_under_a_different_path.html"
+                        title="next chapter">Deploy Saiku UI Under A Different Path</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/installation_guide.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="deploy_saiku_ui_under_a_different_path.html" title="Deploy Saiku UI Under A Different Path"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Introduction"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Meteorite BI.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

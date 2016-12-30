@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Localization &#8212; Saiku Analytics 3.x documentation</title>
+    
+    <link rel="stylesheet" href="_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Default Reports" href="default_reports.html" />
+    <link rel="prev" title="Safe Mode" href="safemode.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="default_reports.html" title="Default Reports"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="safemode.html" title="Safe Mode"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="localization">
+<h1>Localization<a class="headerlink" href="#localization" title="Permalink to this headline">¶</a></h1>
+<p>It is possible to attain a localized version of a Saiku view in the Saiku standalone version.</p>
+<p>Follow these steps:</p>
+<p>In the admin pane, add following to the datasource: <cite>&#8220;DynamicSchemaProcessor=mondrian.i18n.LocalizingDynamicSchemaProcessor;locale=en_US;&#8221;</cite></p>
+<p>Go to <cite>WEB-INF/classes/mondrian.properties</cite> and enable the <cite>LocalizingDynamicSchemaProcessor</cite> by adding following line: <cite>&#8220;mondrian.rolap.localePropFile=locale.locale&#8221;</cite>. This line tells that you will add a folder &#8216;locale&#8217; that contains files prefixed with &#8216;locale&#8217; containing the translations.</p>
+<p>Create the folder &#8216;locale&#8217; in <cite>WEB-inf/classes/</cite> and add some files:
+<cite>locale_en_US.properties
+locale_fr_FR.properties</cite></p>
+<p>Provide translations in your mondrian schema by changing variable names with the ${} notation.</p>
+<p>Provide these translations in the properties files of step 3.
+Test your set-up
+From this point, you can manually check whether your translations work by changing the locale in the datasource definition.</p>
+<p>Enable the ChangeLocale plugin by going to the Saiku Settings.js file and adding &#8216;ChangeLocale&#8217; to the PLUGINS array:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span>PLUGINS: [
+  &quot;Chart&quot;,
+  &quot;ChangeLocale&quot;
+],
+</pre></div>
+</div>
+<p>Make sure the locales are mapped in the settings.js file:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span>Settings.MONDRIAN_LOCALES = {
+  &quot;English&quot;: &quot;en_US&quot;,
+  &quot;Dutch&quot;: &quot;nl_BE&quot;,
+  &quot;French&quot;: &quot;fr_FR&quot;
+};
+</pre></div>
+</div>
+<p>A new button  will appear which will change the locale in the data source definition and reload the connection with the translations.</p>
+<p>The headers will not be translated in cause you use a Mondrian version prior to 4.3.0.1-SPARK.</p>
+<div class="section" id="reports-with-non-latin-characters">
+<h2>Reports with non-Latin characters<a class="headerlink" href="#reports-with-non-latin-characters" title="Permalink to this headline">¶</a></h2>
+<p>Saiku reporting engine uses <cite>Apache FOP &lt;https://xmlgraphics.apache.org/fop/&gt;</cite> to generate PDF files. This framework comes out of the box with a set of Adobe&#8217;s <cite>Base-14 Fonts &lt;https://xmlgraphics.apache.org/fop/0.95/fonts.html#Base-14-Fonts&gt;</cite>, those does not include non-latin characters. So, in order to export PDF reports for languages containing those characters (e.g. Chinese, Greeek, Russian or Arabic), the user need to tell FOP where those fonts are stored and which font to use.</p>
+<p>In the Saiku installation directory, locate the file: <cite>&#8220;saiku/saiku-core/saiku-web/src/main/resources/org/saiku/web/export/fop_config.xml&#8221;</cite>
+This file, is well documented, containing examples on how to specify a directory containing True Type fonts, add one specific font or let FOP automatically load the operational system&#8217;s fonts.</p>
+<p>To specify a directory containing True Type fonts (bulk load):</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="c">&lt;!-- &quot;bulk&quot; font mapping --&gt;</span>
+<span class="nt">&lt;directory</span> <span class="na">recursive=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>FULL_PATH_TO_YOUR_FONTS_DIRECTORY<span class="nt">&lt;/directory&gt;</span>
+</pre></div>
+</div>
+<p>To use one specific font:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="c">&lt;!-- your specific font mapping --&gt;</span>
+<span class="nt">&lt;font</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;FULL_PATH_TO_YOUR_FONT_FILE.ttf&quot;</span> <span class="na">embedding-mode=</span><span class="s">&quot;subset&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;YOUR_FONT_NAME&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+</pre></div>
+</div>
+<p>To let FOP automatically load the operational system&#8217;s fonts (very slow if you have many fonts installed):</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="c">&lt;!-- automatically detect operating system installed fonts --&gt;</span>
+<span class="nt">&lt;auto-detect/&gt;</span>
+</pre></div>
+</div>
+<p>In order to change the PDF report font, you have to change the file: <cite>&#8220;saiku/saiku-core/saiku-web/src/main/resources/org/saiku/web/export/xhtml2fo.xsl&#8221;</cite>, the report font size and font family are specified on lines 9 and 10, respectively:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:param</span> <span class="na">name=</span><span class="s">&quot;font-size&quot;</span> <span class="na">select=</span><span class="s">&quot;&#39;YOUR FONT SIZE&#39;&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;xsl:param</span> <span class="na">name=</span><span class="s">&quot;font.symbol&quot;</span> <span class="na">select=</span><span class="s">&quot;&#39;YOUR FONT FAMILY NAME&#39;&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p><strong>Be careful to keep parameters values inside sigle quotes.</strong></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Localization</a><ul>
+<li><a class="reference internal" href="#reports-with-non-latin-characters">Reports with non-Latin characters</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="safemode.html"
+                        title="previous chapter">Safe Mode</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="default_reports.html"
+                        title="next chapter">Default Reports</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/localization.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="default_reports.html" title="Default Reports"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="safemode.html" title="Safe Mode"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Meteorite BI.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Development &#8212; Saiku Analytics 3.x documentation</title>
+    
+    <link rel="stylesheet" href="_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Server Documentation" href="server_documentation.html" />
+    <link rel="prev" title="Saiku Project Information" href="saiku_project_information.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="server_documentation.html" title="Server Documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="saiku_project_information.html" title="Saiku Project Information"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="development">
+<h1>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="building-saiku">
+<h2>Building Saiku<a class="headerlink" href="#building-saiku" title="Permalink to this headline">¶</a></h2>
+<p>Get the source and create a local working branchClone the repository and setup a &#8216;master&#8217; local branch.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone git://github.com/OSBI/saiku.git
+</pre></div>
+</div>
+<p>or if you are an authenticated committer, you would use..</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone git@github.com/OSBI/saiku.git
+</pre></div>
+</div>
+<p>if developing off of a non-master branch, create local branch that tracks the remote branch</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git checkout -b somebranch origin/somebranch
+</pre></div>
+</div>
+<p>Build all saiku projects (core libs + webapps for UI and backend)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> saiku <span class="o">&amp;&amp;</span> mvn clean install -DskipTests
+</pre></div>
+</div>
+<p>The most commonly used package is the saiku-server package. It includes the saiku webapps deployed on a tomcat (with or without sample data). The server package with foodmart can be found at:</p>
+<p><cite>./saiku/saiku-server/target/dist/saiku-server/</cite></p>
+<p>cd there and run the script <cite>start-saiku.sh</cite> / <cite>start-saiku.bat</cite> depending on your platform. Saiku server will then be available (in Tomcat) at [<a class="reference external" href="http://localhost:8080](http://localhost:8080">http://localhost:8080](http://localhost:8080</a>)</p>
+<p>Warning It&#8217;s important to have <cite>JRE_HOME</cite> set to the java install you want to use. Ubuntu and probably other linux distros by default install open-jdk (which will not run Saiku).</p>
+<p>All other packages are available at :</p>
+<p><cite>./saiku/saiku-server/target/</cite></p>
+</div>
+<div class="section" id="developing-saiku-in-eclipse">
+<h2>Developing Saiku in Eclipse<a class="headerlink" href="#developing-saiku-in-eclipse" title="Permalink to this headline">¶</a></h2>
+<p>Once you have cloned the public git repo (see step 1 above), you are left with a number of maven projects. These projects are setup for inclusion in Eclipse. If you want any Saiku going in any other IDE you need to use the according maven goal (like mvn eclipse)</p>
+<p>Note In either case you may see warnings in Eclipse indicating a bad JRE reference in your build paths. If so, you need to adjust the JRE used in the Eclipse build path (for each project) to point it to a valid 1.6 JRE.</p>
+<div class="section" id="import-into-eclipse-with-maven-plugin">
+<h3>Import into Eclipse with Maven plugin<a class="headerlink" href="#import-into-eclipse-with-maven-plugin" title="Permalink to this headline">¶</a></h3>
+<p>If you have an Eclipse plugin installed for Maven integration, such as [<a class="reference external" href="http://maven.apache.org/eclipse-plugin.html](http://maven.apache.org/eclipse-plugin.html">http://maven.apache.org/eclipse-plugin.html](http://maven.apache.org/eclipse-plugin.html</a>), you can import Maven projects directly into Eclipse and the plugin will generate the correct Eclipse project metadata for you.</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>File-&gt;Import...
+Select Maven-&gt;Existing Maven Projects
+In &quot;Root Directory&quot; specify the root saiku folder
+Select which projects to import and then Finish
+</pre></div>
+</div>
+<p>Let Maven generate Eclipse project files. Change directory into each of the three top level saiku projects and execute the &#8216;eclipse&#8217; goal of the &#8216;eclipse&#8217; Maven plugin like so:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> saiku-core <span class="o">&amp;&amp;</span> mvn eclipse:eclipse
+<span class="nb">cd</span> saiku-webapp <span class="o">&amp;&amp;</span> mvn eclipse:eclipse
+<span class="nb">cd</span> saiku-server <span class="o">&amp;&amp;</span> mvn eclipse:eclipse
+</pre></div>
+</div>
+<p>Once you&#8217;ve done that, import the projects into your Eclipse workspace:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>File-&gt;Import...
+Select General-&gt;Existing Projects into Workspace
+Choose <span class="s2">&quot;Select Root Directory&quot;</span> and specify the root saiku folder
+Select which projects to import and <span class="k">then</span> Finish
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Development</a><ul>
+<li><a class="reference internal" href="#building-saiku">Building Saiku</a></li>
+<li><a class="reference internal" href="#developing-saiku-in-eclipse">Developing Saiku in Eclipse</a><ul>
+<li><a class="reference internal" href="#import-into-eclipse-with-maven-plugin">Import into Eclipse with Maven plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="saiku_project_information.html"
+                        title="previous chapter">Saiku Project Information</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="server_documentation.html"
+                        title="next chapter">Server Documentation</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/development.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="server_documentation.html" title="Server Documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="saiku_project_information.html" title="Saiku Project Information"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Saiku Analytics 3.x documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Meteorite BI.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

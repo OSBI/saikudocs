@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &#8212; Saiku Analytics 3.x documentation</title>
+    
+    <link rel="stylesheet" href="_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation Guide" href="installation_guide.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="installation_guide.html" title="Installation Guide"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Saiku Analytics 3.x documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>Saiku was founded in 2008 by Tom Barber and Paul Stoellberger. Originally called the Pentaho Analysis Tool, if started life as a basic GWT based wrapper around the OLAP4J library. Over the years it has evolved, and after a complete rewrite in 2010, it was reborn as Saiku.</p>
+<p>Saiku offers a user friendly, web based analytics solution that lets users, quickly and easily analyse corporate data and create and share reports. The solution connects to a range of OLAP Servers including Mondrian, Microsoft Analysis Services, SAP BW and Oracle Hyperion and can be deployed rapidly and cost effectively to allow users to explore data in real time.</p>
+<div class="section" id="olap-analysis">
+<h3>OLAP Analysis<a class="headerlink" href="#olap-analysis" title="Permalink to this headline">¶</a></h3>
+<p>On-Line Analytical Processing (OLAP) is a category of software technology that enables analysts, managers and executives to gain insight into data through fast, consistent, interactive access to a wide variety of possible views of information that has been transformed from raw data to reflect the real dimensionality of the enterprise as understood by the user. OLAP functionality is characterized by dynamic multi-dimensional analysis of consolidated enterprise data supporting end user analytical and navigational activities (The OLAP Council)</p>
+<p>By harnessing the power of OLAP, Saiku allows users to choose the measures and dimensions they need to analyse and “slice and dice” the data and drill into the detail to uncover relationships, opportunities and issues. The intuitive user interface lets users drill down and up, filter, pivot, sort, and chart against OLAP and In-Memory engines. Utilizing the Olap4J library, Saiku is the first application on the market to offer support for Mondrian’s Scenario feature allowing non destructive editing of query results, giving users the ability to adjust the figures and perform “what-if” analysis over their data. By harnessing the power of Mondrian, Saiku offers scalable in-memory analysis. Large amounts of data can be stored in memory in a distributed manner across the local network, offering greatly improved performance over large data warehouses as the aggregated data is retrieved from the network instead of reading from disk.</p>
+<img alt="_images/screenshot.png" src="_images/screenshot.png" />
+</div>
+<div class="section" id="architecture">
+<h3>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h3>
+<p>Saiku is a modular analysis suite offering lightweight OLAP which remains easily embeddable, extendable and configurable. The Saiku RESTful server connects to existing OLAP systems, which powers user-friendly, intuitive analytics via our lightweight JQuery based frontend.</p>
+<p>Look and feel can be completely customized as the user interface is based entirely on open standards. The supplied user interface is written in HTML, Javascript and CSS, making it easy to change or entirely replace the user interface. By using RESTful standards, the server can be easily integrated into different user interface technologies and 3rd party applications, the only requirements being that the 3rd party application can send and receive HTTP communication and understand JSON data instructions. The client application needs no understanding of MDX or related query languages.</p>
+</div>
+<div class="section" id="open-source">
+<h3>Open Source<a class="headerlink" href="#open-source" title="Permalink to this headline">¶</a></h3>
+<p>To make sure Saiku survives and sticks to its open source roots, Analytical Labs was created as a business to front Saiku and offer consultancy and development around the Saiku infrastructure. Analytical Labs is based in London.</p>
+<p>Saiku is freely available to download from [www.saikuanalytics.com](<a class="reference external" href="http://www.analytical-labs.com">http://www.analytical-labs.com</a>). Organisations can use the solution internally without having to pay license fees. For customers who would like to use the solution in an Enterprise environment a number of options are available for support and to embed the solution into commercial applications.</p>
+</div>
+</div>
+</div>
+<div class="section" id="administration-guide">
+<h1>Administration Guide<a class="headerlink" href="#administration-guide" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation_guide.html">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deploy_saiku_ui_under_a_different_path.html">Deploy Saiku UI Under A Different Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saiku_enterprise_manual_deployment.html">Saiku Enterprise Manual Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.html">Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_guide.html#saiku-enterprise-edition">Saiku Enterprise Edition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_guide.html#saiku-community-edition">Saiku Community Edition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_guide.html#other-methods">Other Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_guide.html#pentaho-plugin">Pentaho Plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="administrators_console.html">Administrators Console</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="administrators_console.html#user-management">User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administrators_console.html#data-source-management">Data Source Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administrators_console.html#maintenance">Maintenance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administrators_console.html#license-information">License Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="administrators_console.html#logging">Logging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="log_files.html">Log Files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Schema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced_date_filtering.html">Advanced Date Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conditional_formatting.html">Conditional Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating_a_schema_using_saiku_schema_designer.html">Creating A Schema Using Saiku Schema Designer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schema.html#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="saiku_settings.html">Saiku Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="embedding.html">Embedding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="embedding.html#iframe-embedding">IFrame Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="embedding.html#saiku-embed-framework">Saiku Embed Framework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backups.html">Backups and Restoration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration From Saiku 2.x</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration.html#importing-legacy-schema-and-data-sources">Importing Legacy Schema and Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html#importing-legacy-reports">Importing Legacy Reports</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="webdav.html">Webdav Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="safemode.html">Safe Mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="localization.html">Localization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="localization.html#reports-with-non-latin-characters">Reports with non-Latin characters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="default_reports.html">Default Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating_from_analzyer.html">Migrating From Pentaho Analyzer</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="creating_a_query.html">Creating A Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filtering.html">Filtering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="filtering.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtering.html#advanced">Advanced</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="charts_and_graphs.html">Charts And Graphs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="charts_and_graphs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charts_and_graphs.html#chart-properties">Chart Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mdx_mode.html">MDX Mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calculated_members.html">Calculated Members</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameter_support.html">Parameter Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="totals_and_subtotals.html">Totals And Subtotals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboards.html">Dashboards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#dashboard-design">Dashboard Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#filtering-reports">Filtering Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#viewing">Viewing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#adding-content">Adding Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#adding-embed-code">Adding Embed Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="saiku_tips_and_tricks.html">Saiku Tips And Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_articles.html">How To Articles</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="project-information">
+<h1>Project Information<a class="headerlink" href="#project-information" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="saiku_project_information.html">Saiku Project Information</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="development">
+<h1>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development.html#building-saiku">Building Saiku</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html#developing-saiku-in-eclipse">Developing Saiku in Eclipse</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="server_documentation.html">Server Documentation</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="getting-help">
+<h1>Getting Help<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="irc">
+<h2>IRC<a class="headerlink" href="#irc" title="Permalink to this headline">¶</a></h2>
+<p>If you prefer more &#8220;real time&#8221; help and support. We have a very active and helpful community on the Saiku IRC channel. This can be found at ##saiku on the Freenode IRC network. Feel free to drop in and introduce yourself we&#8217;ll be more than willing to answer any questions or queries you may have.</p>
+</div>
+<div class="section" id="commercial-support">
+<h2>Commercial Support<a class="headerlink" href="#commercial-support" title="Permalink to this headline">¶</a></h2>
+<p>For customers who require Enterprise Support we offer a complete technical support solution. Support is available on an annual subscription basis. Support is provided via a dedicated support portal where customers can raise issues and support requests, track issue progress and receive responses from our full time support team.</p>
+<p>For more information on our support services and pricing please visit our [website](<a class="reference external" href="http://saiku.meteorite.bi">http://saiku.meteorite.bi</a>)</p>
+</div>
+</div>
+<div class="section" id="licensing">
+<h1>Licensing<a class="headerlink" href="#licensing" title="Permalink to this headline">¶</a></h1>
+<p>Saiku Analytics is licenced under the Apache Licence. Prior to version 2.4 the Saiku server component was licensed under the GPL v2 license and the UI under the LGPL license. From version 2.4 onwards we have switched the entire stack to the Apache license V2. We believe that using a more permissive license will help Saiku grow as a product as it allows people to use the software more freely.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#background">Background</a><ul>
+<li><a class="reference internal" href="#olap-analysis">OLAP Analysis</a></li>
+<li><a class="reference internal" href="#architecture">Architecture</a></li>
+<li><a class="reference internal" href="#open-source">Open Source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#administration-guide">Administration Guide</a></li>
+<li><a class="reference internal" href="#user-guide">User Guide</a></li>
+<li><a class="reference internal" href="#project-information">Project Information</a></li>
+<li><a class="reference internal" href="#development">Development</a></li>
+<li><a class="reference internal" href="#getting-help">Getting Help</a><ul>
+<li><a class="reference internal" href="#irc">IRC</a></li>
+<li><a class="reference internal" href="#commercial-support">Commercial Support</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#licensing">Licensing</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="installation_guide.html"
+                        title="next chapter">Installation Guide</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="installation_guide.html" title="Installation Guide"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Saiku Analytics 3.x documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Meteorite BI.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>
