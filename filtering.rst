@@ -24,3 +24,32 @@ Searching and Pre-Filtering on Server
 If you have large dimensions, Saiku pre filters them on the server to improve user interface performance. This list on the left may be truncated because it would be too long and cause your browser to hang. To filter you can use the Search box at the top of the filter dialog.
 
 You know if your filter dialog is being filtered when the Items: count equals the Display Limit count. The limit is adjustable by the administrator by looking in the Settings file
+
+Defining Default Filters 
+------------------------
+Saiku supports the definition of default filters, which is done passing certain URL parameters. This feature is very useful when Saiku in embedded into a 3rd party platform.
+
+Users can define two kinds of default filters: 
+
+- Hierarchy/Level value filters;
+- MDX expression filter.
+  
+To define a **Hierarchy/Level value filter** users have to add URL parameters with the following syntax: 
+
+`http://saiku_host:saiku_port?default_filter_[Hierarchy][Level]=value`. 
+
+For instance: 
+
+`http://saiku_host:saiku_port?default_filter_[Time].[Weekly].[Year]=1998`. 
+
+You may add more than one parameter, e.g.: 
+
+`http://saiku_host:saiku_port?default_filter_[Time].[Weekly].[Year]=1998&default_filter_[Time].[Weekly].[Day]=15`.
+
+Finally, in order to define a **MDX expression filter** users have to add URL parameters with the following syntax: 
+
+`http://saiku_host:saiku_port?default_mdx_filter_AXIS=<filter expression>`. 
+
+For instance: 
+
+`http://saiku_host:saiku_port?default_mdx_filter_ROWS=[Customer].[Customers].[All Customers]`.
